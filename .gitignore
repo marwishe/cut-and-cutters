@@ -1,0 +1,14 @@
+# virtual environment (venv/ || .venv/ || env/)
+venv/ 
+# python cache
+__pycache__/
+*.py[cod]
+*$py.class
+# local environments with secrets & settings
+.env
+.env.*
+!.env.example
+# IDE settings
+.vscode/
+*.swp
+*.swo
