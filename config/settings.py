@@ -24,7 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'apps.branches'
+    'apps.users',
+    'apps.branches',
+    'apps.staff'
 ]
 
 MIDDLEWARE = [
@@ -67,7 +69,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'appps.users.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -96,10 +98,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+MEDIA_ROOT = BASE_DIR / 'media'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.1/howto/static-files/
-
+MEDIA_URL = 'media/'
 STATIC_URL = 'static/'
 
 
