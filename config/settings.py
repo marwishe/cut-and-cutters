@@ -26,7 +26,9 @@ INSTALLED_APPS = [
 
     'apps.users',
     'apps.branches',
-    'apps.staff'
+    'apps.staff',
+    'apps.services',
+    'apps.booking',
 ]
 
 MIDDLEWARE = [
