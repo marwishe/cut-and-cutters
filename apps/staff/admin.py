@@ -11,3 +11,4 @@ class MasterAdmin(admin.ModelAdmin):
     list_display = ('name', 'branch', 'user')
     list_filter = ('branch',)
     inlines = [WorkingHoursInline]
+    prepopulated_fields = {'slug': ('name',)}

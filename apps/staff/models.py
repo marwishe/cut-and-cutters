@@ -1,8 +1,14 @@
+from django.utils.text import slugify
 from django.db.models import CASCADE
 from django.db.models import IntegerChoices
 from apps.branches.models import Branch
 from config import settings
 from django.db import models
+
+
+def master_avatar_path(instance, filename):
+    ext = filename.rsplit('.', 1)[-1].lower()
+    return f'masters/{instance.slug}/avatar.{ext}'
 
 # Create your models here.
 class Master(models.Model):
@@ -15,10 +21,21 @@ class Master(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.PROTECT, related_name='masters')
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=120, unique=True, blank=True)
-    avatar = models.ImageField(upload_to='masters/avatar')
+    avatar = models.ImageField(upload_to=master_avatar_path)
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.name)
+            slug = base_slug
+            counter = 1
+            while Master.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base_slug}-{counter}'
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
 
 class WorkingHours(models.Model):
     class Weekday(IntegerChoices):
