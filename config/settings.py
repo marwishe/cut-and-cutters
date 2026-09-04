@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'apps.staff',
     'apps.services',
     'apps.booking',
+    'apps.verification'
 ]
 
 MIDDLEWARE = [
