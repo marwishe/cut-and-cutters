@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+wheels/
+
+# Virtual Environment
+.venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Cache
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local DB
+*.sqlite3
+
+# Django files
+media/
+staticfiles/
+
+# IDE && OS
+.zed/
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
